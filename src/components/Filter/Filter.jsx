@@ -1,36 +1,26 @@
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import { Component } from "react";
 import "./Filter.module.css";
 
 
 
-export class Filter extends Component{
-    inputFilter = nanoid();
+export const Filter = ({value, onChange}) => {
+    const inputFilter = nanoid();
+    return (
+        <div>
+            <label htmlFor={inputFilter}> Find contacts by Name</label>
+            <input
+                id={inputFilter}
+                type="text"
+                name="filter"
+                value={value}
+                onChange={onChange}
+            />
+        </div>
+    )
+}
 
-    state = {
-        filter: '',
-    }
-
-    handleFilter = (e) => {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
-        
-        this.props.filter(this.state.filter.toLowerCase());
-        console.log(this.state.filter)
-    }
-
-    render() {
-        return (
-            <div>
-                <label htmlFor={this.inputFilter}> Find contacts by Name</label>
-                <input
-                    id={this.inputFilter}
-                    type="text"
-                    name="filter"
-                    value={this.state.filter}
-                    onChange={this.handleFilter}
-                />
-            </div>
-        )
-    }
+Filter.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func,
 }

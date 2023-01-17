@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid'
 import { Component } from "react";
 import "./ContactForm.module.css"
@@ -14,7 +15,6 @@ export class ContactForm extends Component{
     handleChange = (event) => {
         const { name, value } = event.currentTarget;
         this.setState({ [name]: value })
-        console.log(this.state)
     }
 
     handleSubmit = (e) => {
@@ -57,5 +57,8 @@ export class ContactForm extends Component{
             </form>
         )
     }
+}
 
+ContactForm.propTypes = {
+    onSubmit: PropTypes.func,
 }

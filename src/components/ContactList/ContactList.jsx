@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import "./ContactList.module.css";
 
-export const ContactList = ({ options } ) => {
+export const ContactList = ({ options, onDelete } ) => {
     return (
         <ul>
            {options.map(({id, name,number}) => (
-                <li key={id}>
+               <li key={id}>
+                   
                     <span >{name}:</span>
                     <span > {number}</span>
+                    <button onClick={() => onDelete(id)}>Delete</button>
                 </li>
             ))}
         </ul>
