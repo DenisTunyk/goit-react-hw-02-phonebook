@@ -26,12 +26,12 @@ export class App extends Component {
       number: data.number
     }
     
-    const isSet = this.state.contacts.filter(item => item.name.toLowerCase() === data.name.toLowerCase());
+    const isSet = this.state.contacts.find(item => item.name.toLowerCase() === data.name.toLowerCase());
 
-    if (isSet.length === 0) {
+    if (!isSet) {
       this.setState(prevState => ({
         contacts: [contact, ...prevState.contacts]
-        }))
+      }))
     } else {
       alert(`${ data.name } is already is contact`)
     }
